@@ -1,0 +1,37 @@
+type Query {
+  listingsByCompany(companyId:ID!): [Listing!]!
+  listings: [Listing!]!
+  listingById(id: Int!): Listing
+}
+
+type Mutation {
+  addListing(input: ListingInput!): Listing!
+}
+
+type Listing {
+  id: Int!
+  company: String!
+  title: String!
+  jobType: String!
+  jobDescription: String!
+  category: String
+  streetAddress: String
+  city: String
+  country: String
+  beginDate: String
+  compentation: Float
+}
+
+input ListingInput {
+  id: Int
+  company: String!
+  title: String!
+  jobType: String!
+  jobDescription: String!
+  category: String
+  streetAddress: String
+  city: String
+  country: String
+  beginDate: String
+  compentation: Float
+}
