@@ -7,6 +7,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/transport"
+	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/go-chi/chi"
 	"github.com/gorilla/websocket"
 	"github.com/rs/cors"
@@ -37,7 +38,7 @@ func main() {
 		},
 	})
 
-	//router.Handle("/", playground.Handler("Jobs", "/query"))
+	router.Handle("/playground", playground.Handler("Jobs", "/graphql"))
 	router.Handle("/graphql", srv)
 
 	err := http.ListenAndServe(":8080", router)

@@ -13,7 +13,7 @@ type Listing struct {
 	City           *string  `json:"city"`
 	Country        *string  `json:"country"`
 	BeginDate      *string  `json:"beginDate"`
-	Compentation   *float64 `json:"compentation"`
+	Compensation   *float64 `json:"compensation"`
 }
 
 type ListingInput struct {
@@ -27,5 +27,5 @@ type ListingInput struct {
 	City           *string  `json:"city"`
 	Country        *string  `json:"country"`
 	BeginDate      *string  `json:"beginDate"`
-	Compentation   *float64 `json:"compentation"`
+	Compensation   *float64 `json:"compensation"`
 }

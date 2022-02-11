@@ -4,6 +4,7 @@ package graph
 // will be copied through when generating and any unknown code will be moved to the end.
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -15,7 +16,39 @@ import (
 )
 
 func (r *mutationResolver) AddListing(ctx context.Context, input model.ListingInput) (*model.Listing, error) {
-	panic(fmt.Errorf("not implemented"))
+	postBody, err := json.Marshal(input)
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	responseBody := bytes.NewBuffer(postBody)
+
+	resp, err := http.Post("http://localhost:7000/listings", "application/json", responseBody)
+
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	var listing *model.Listing
+	err = json.Unmarshal(body, &listing)
+
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	return listing, nil
 }
 
 func (r *queryResolver) ListingsByCompany(ctx context.Context, companyID string) ([]*model.Listing, error) {

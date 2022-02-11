@@ -48,7 +48,7 @@ type ComplexityRoot struct {
 		Category       func(childComplexity int) int
 		City           func(childComplexity int) int
 		Company        func(childComplexity int) int
-		Compentation   func(childComplexity int) int
+		Compensation   func(childComplexity int) int
 		Country        func(childComplexity int) int
 		ID             func(childComplexity int) int
 		JobDescription func(childComplexity int) int
@@ -120,12 +120,12 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Listing.Company(childComplexity), true
 
-	case "Listing.compentation":
-		if e.complexity.Listing.Compentation == nil {
+	case "Listing.compensation":
+		if e.complexity.Listing.Compensation == nil {
 			break
 		}
 
-		return e.complexity.Listing.Compentation(childComplexity), true
+		return e.complexity.Listing.Compensation(childComplexity), true
 
 	case "Listing.country":
 		if e.complexity.Listing.Country == nil {
@@ -297,7 +297,7 @@ type Listing {
   city: String
   country: String
   beginDate: String
-  compentation: Float
+  compensation: Float
 }
 
 input ListingInput {
@@ -311,7 +311,7 @@ input ListingInput {
   city: String
   country: String
   beginDate: String
-  compentation: Float
+  compensation: Float
 }`, BuiltIn: false},
 }
 var parsedSchema = gqlparser.MustLoadSchema(sources...)
@@ -753,7 +753,7 @@ func (ec *executionContext) _Listing_beginDate(ctx context.Context, field graphq
 	return ec.marshalOString2ᚖstring(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) _Listing_compentation(ctx context.Context, field graphql.CollectedField, obj *model.Listing) (ret graphql.Marshaler) {
+func (ec *executionContext) _Listing_compensation(ctx context.Context, field graphql.CollectedField, obj *model.Listing) (ret graphql.Marshaler) {
 	defer func() {
 		if r := recover(); r != nil {
 			ec.Error(ctx, ec.Recover(ctx, r))
@@ -771,7 +771,7 @@ func (ec *executionContext) _Listing_compentation(ctx context.Context, field gra
 	ctx = graphql.WithFieldContext(ctx, fc)
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return obj.Compentation, nil
+		return obj.Compensation, nil
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -2225,11 +2225,11 @@ func (ec *executionContext) unmarshalInputListingInput(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-		case "compentation":
+		case "compensation":
 			var err error
 
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("compentation"))
-			it.Compentation, err = ec.unmarshalOFloat2ᚖfloat64(ctx, v)
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("compensation"))
+			it.Compensation, err = ec.unmarshalOFloat2ᚖfloat64(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -2342,9 +2342,9 @@ func (ec *executionContext) _Listing(ctx context.Context, sel ast.SelectionSet, 
 
 			out.Values[i] = innerFunc(ctx)
 
-		case "compentation":
+		case "compensation":
 			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
-				return ec._Listing_compentation(ctx, field, obj)
+				return ec._Listing_compensation(ctx, field, obj)
 			}
 
 			out.Values[i] = innerFunc(ctx)
