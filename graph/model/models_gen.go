@@ -3,29 +3,29 @@
 package model
 
 type Listing struct {
-	ID             int      `json:"id"`
-	Company        string   `json:"company"`
-	Title          string   `json:"title"`
-	JobType        string   `json:"jobType"`
-	JobDescription string   `json:"jobDescription"`
-	Category       *string  `json:"category"`
-	StreetAddress  *string  `json:"streetAddress"`
-	City           *string  `json:"city"`
-	Country        *string  `json:"country"`
-	BeginDate      *string  `json:"beginDate"`
-	Compensation   *float64 `json:"compensation"`
+	ID             int     `json:"id"`
+	Company        string  `json:"company"`
+	Title          string  `json:"title"`
+	JobType        string  `json:"jobType"`
+	JobDescription string  `json:"jobDescription"`
+	Category       *string `json:"category"`
+	StreetAddress  *string `json:"streetAddress"`
+	City           *string `json:"city"`
+	Country        *string `json:"country"`
+	BeginDate      *string `json:"beginDate"`
+	Compensation   *string `json:"compensation"`
 }
 
 type ListingInput struct {
-	ID             *int     `json:"id"`
-	Company        string   `json:"company"`
-	Title          string   `json:"title"`
-	JobType        string   `json:"jobType"`
-	JobDescription string   `json:"jobDescription"`
-	Category       *string  `json:"category"`
-	StreetAddress  *string  `json:"streetAddress"`
-	City           *string  `json:"city"`
-	Country        *string  `json:"country"`
-	BeginDate      *string  `json:"beginDate"`
-	Compensation   *float64 `json:"compensation"`
+	ID             *int    `json:"id"`
+	Company        string  `json:"company"`
+	Title          string  `json:"title"`
+	JobType        string  `json:"jobType"`
+	JobDescription string  `json:"jobDescription"`
+	Category       *string `json:"category"`
+	StreetAddress  *string `json:"streetAddress"`
+	City           *string `json:"city"`
+	Country        *string `json:"country"`
+	BeginDate      *string `json:"beginDate"`
+	Compensation   *string `json:"compensation"`
 }

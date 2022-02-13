@@ -19,7 +19,7 @@ type Listing {
   city: String
   country: String
   beginDate: String
-  compensation: Float
+  compensation: String
 }
 
 input ListingInput {
@@ -33,5 +33,5 @@ input ListingInput {
   city: String
   country: String
   beginDate: String
-  compensation: Float
+  compensation: String
 }
